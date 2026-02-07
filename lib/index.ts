@@ -142,9 +142,7 @@ class EasyEpoch {
       this.compactMode();
     }
 
-    if (opts.theme) {
-      this.setTheme(opts.theme);
-    }
+    this.setTheme(opts.theme || 'dark');
   }
 
   // Reset by selecting current date.

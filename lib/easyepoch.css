@@ -34,6 +34,30 @@
   z-index: 1000;
 }
 
+/* ── Dark Theme (explicit, mirrors defaults for clean class-swap) ── */
+.easyepoch-wrapper.easyepoch-theme-dark {
+  --easyepoch-bg: #1e2030;
+  --easyepoch-text: #e0e0e0;
+  --easyepoch-text-secondary: #94a3b8;
+  --easyepoch-text-muted: rgba(255, 255, 255, 0.3);
+  --easyepoch-primary: #06b6d4;
+  --easyepoch-secondary: #7c3aed;
+  --easyepoch-accent: #c4b5fd;
+  --easyepoch-header-bg: linear-gradient(135deg, #7c3aed, #06b6d4);
+  --easyepoch-date-section-bg: linear-gradient(135deg, #0d9488, #7c3aed);
+  --easyepoch-selected-bg: linear-gradient(135deg, #06b6d4, #7c3aed);
+  --easyepoch-hover-bg: rgba(255, 255, 255, 0.06);
+  --easyepoch-border: rgba(255, 255, 255, 0.06);
+  --easyepoch-overlay-bg: rgba(0, 0, 0, 0.6);
+  --easyepoch-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+              0 0 0 1px rgba(255, 255, 255, 0.06);
+  --easyepoch-cell-text: #cbd5e1;
+  --easyepoch-cell-hover-text: #fff;
+  --easyepoch-cell-active-text: #fff;
+  --easyepoch-input-border: rgba(255, 255, 255, 0.15);
+  --easyepoch-btn-hover-text: #fff;
+}
+
 /* ── Light Theme ── */
 .easyepoch-wrapper.easyepoch-theme-light {
   --easyepoch-bg: #ffffff;

@@ -441,11 +441,11 @@ describe('EasyEpoch public properties', () => {
 });
 
 describe('EasyEpoch theming', () => {
-  it('should use dark theme by default (no theme class)', () => {
+  it('should use dark theme by default', () => {
     const picker = new EasyEpoch();
     const wrapper = document.querySelector('.easyepoch-wrapper') as HTMLElement;
     expect(wrapper.classList.contains('easyepoch-theme-light')).toBe(false);
-    expect(wrapper.classList.contains('easyepoch-theme-dark')).toBe(false);
+    expect(wrapper.classList.contains('easyepoch-theme-dark')).toBe(true);
   });
 
   it('should apply light theme via constructor option', () => {
