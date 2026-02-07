@@ -6,12 +6,12 @@ module.exports = function (env) {
   const production = env && env.production;
   let config = {
     entry: {
-      simplepicker: './lib/index.ts'
+      easyepoch: './lib/index.ts'
     },
     output: {
       filename: '[name].js',
       path: path.resolve(ROOT_DIR, 'dist'),
-      library: 'SimplePicker',
+      library: 'EasyEpoch',
       libraryTarget: 'var'
     },
     resolve: {
@@ -27,7 +27,7 @@ module.exports = function (env) {
     plugins: [
       new rspack.CopyRspackPlugin({
         patterns: [
-          { from: 'lib/simplepicker.css', to: 'simplepicker.css' }
+          { from: 'lib/easyepoch.css', to: 'easyepoch.css' }
         ]
       })
     ],
@@ -60,7 +60,7 @@ module.exports = function (env) {
     const nodeConfig = {
       ...config,
       entry: {
-        'simplepicker.node': './lib/index.ts'
+        'easyepoch.node': './lib/index.ts'
       },
       output: {
         ...config.output,
