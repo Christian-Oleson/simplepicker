@@ -1,6 +1,6 @@
 {
   "name": "chronosjs",
-  "version": "2.0.4",
+  "version": "1.0.0",
   "description": "A lightweight datetime picker in vanilla JavaScript with zero dependencies.",
   "main": "./dist/simplepicker.node.js",
   "types": "./dist/index.d.ts",
