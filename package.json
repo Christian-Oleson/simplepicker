@@ -2,14 +2,14 @@
   "name": "easyepoch",
   "version": "1.0.0",
   "description": "A lightweight datetime picker in vanilla JavaScript with zero dependencies.",
-  "main": "./dist/simplepicker.node.js",
+  "main": "./dist/easyepoch.node.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/simplepicker.node.js",
-      "default": "./dist/simplepicker.node.js"
+      "require": "./dist/easyepoch.node.js",
+      "default": "./dist/easyepoch.node.js"
     },
-    "./css": "./dist/simplepicker.css"
+    "./css": "./dist/easyepoch.css"
   },
   "scripts": {
     "start": "rspack serve --hot",
@@ -19,7 +19,7 @@
   },
   "files": [
     "dist/",
-    "simplepicker.d.ts"
+    "easyepoch.d.ts"
   ],
   "repository": {
     "type": "git",

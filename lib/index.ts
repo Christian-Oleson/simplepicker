@@ -2,8 +2,8 @@ import * as dateUtil from './date-util';
 import { MonthTracker } from './date-util';
 import { htmlTemplate } from './template';
 
-type SimplePickerEvent = 'submit' | 'close';
-interface SimplePickerOpts {
+type EasyEpochEvent = 'submit' | 'close';
+interface EasyEpochOpts {
   zIndex?: number;
   compactMode?: boolean;
   disableTimeSection?: boolean;
@@ -20,18 +20,18 @@ interface EventHandlers {
   [key: string]: HandlerFunction[];
 }
 
-class SimplePicker {
+class EasyEpoch {
   selectedDate: Date;
-  $simplePicker: HTMLElement;
+  $easyEpoch: HTMLElement;
   readableDate: string;
   _eventHandlers: EventHandlers;
   _validOnListeners = validListeners;
 
-  private opts: SimplePickerOpts;
+  private opts: EasyEpochOpts;
   private $: Function;
   private $$: Function;
-  private $simplepicker: HTMLElement;
-  private $simplepickerWrapper: HTMLElement;
+  private $easyepoch: HTMLElement;
+  private $easyepochWrapper: HTMLElement;
   private $trs: HTMLElement[];
   private $tds: HTMLElement[];
   private $headerMonthAndYear: HTMLElement;
@@ -46,21 +46,21 @@ class SimplePicker {
   private $displayDateElements: HTMLElement[];
   private monthTracker: MonthTracker;
 
-  constructor(arg1?: HTMLElement | string | SimplePickerOpts, arg2?: SimplePickerOpts) {
+  constructor(arg1?: HTMLElement | string | EasyEpochOpts, arg2?: EasyEpochOpts) {
     let el: HTMLElement | undefined = undefined;
-    let opts: SimplePickerOpts | undefined = arg2;
+    let opts: EasyEpochOpts | undefined = arg2;
 
     if (typeof arg1 === 'string') {
       const element = <HTMLElement> document.querySelector(arg1);
       if (element !== null) {
         el = element;
       } else {
-        throw new Error('Invalid selector passed to SimplePicker!');
+        throw new Error('Invalid selector passed to EasyEpoch!');
       }
     } else if (arg1 instanceof HTMLElement) {
       el = arg1;
     } else if (typeof arg1 === 'object') {
-      opts = arg1 as SimplePickerOpts;
+      opts = arg1 as EasyEpochOpts;
     }
 
     if (!el) {
@@ -81,7 +81,7 @@ class SimplePicker {
   }
 
   // We use $, $$ as helper method to conviently select
-  // element we need for simplepicker.
+  // element we need for easyepoch.
   // Also, Limit the query to the wrapper class to avoid
   // selecting elements on the other instance.
   initElMethod(el) {
@@ -89,23 +89,23 @@ class SimplePicker {
     this.$$ = (sel) => el.querySelectorAll(sel);
   }
 
-  init(el: HTMLElement, opts: SimplePickerOpts) {
-    this.$simplepickerWrapper = <HTMLElement> el.querySelector('.simplepicker-wrapper');
-    this.initElMethod(this.$simplepickerWrapper);
+  init(el: HTMLElement, opts: EasyEpochOpts) {
+    this.$easyepochWrapper = <HTMLElement> el.querySelector('.easyepoch-wrapper');
+    this.initElMethod(this.$easyepochWrapper);
 
     const { $, $$ } = this;
-    this.$simplepicker = $('.simplepicker-date-picker');
-    this.$trs = $$('.simplepicker-calender tbody tr');
-    this.$tds = $$('.simplepicker-calender tbody td');
-    this.$headerMonthAndYear = $('.simplepicker-month-and-year');
-    this.$monthAndYear = $('.simplepicker-selected-date');
-    this.$date = $('.simplepicker-date');
-    this.$day = $('.simplepicker-day-header');
-    this.$time = $('.simplepicker-time');
-    this.$timeInput = $('.simplepicker-time-section input');
-    this.$timeSectionIcon = $('.simplepicker-icon-time');
-    this.$cancel = $('.simplepicker-cancel-btn');
-    this.$ok = $('.simplepicker-ok-btn');
+    this.$easyepoch = $('.easyepoch-date-picker');
+    this.$trs = $$('.easyepoch-calender tbody tr');
+    this.$tds = $$('.easyepoch-calender tbody td');
+    this.$headerMonthAndYear = $('.easyepoch-month-and-year');
+    this.$monthAndYear = $('.easyepoch-selected-date');
+    this.$date = $('.easyepoch-date');
+    this.$day = $('.easyepoch-day-header');
+    this.$time = $('.easyepoch-time');
+    this.$timeInput = $('.easyepoch-time-section input');
+    this.$timeSectionIcon = $('.easyepoch-icon-time');
+    this.$cancel = $('.easyepoch-cancel-btn');
+    this.$ok = $('.easyepoch-ok-btn');
 
     this.$displayDateElements = [
       this.$day,
@@ -113,7 +113,7 @@ class SimplePicker {
       this.$date
     ];
 
-    this.$time.classList.add('simplepicker-fade');
+    this.$time.classList.add('easyepoch-fade');
     const now = new Date();
     this.render(dateUtil.scrapeMonth(now, this.monthTracker));
 
@@ -123,7 +123,7 @@ class SimplePicker {
     this.reset(opts.selectedDate || now);
 
     if (opts.zIndex !== undefined) {
-      this.$simplepickerWrapper.style.zIndex = opts.zIndex.toString();
+      this.$easyepochWrapper.style.zIndex = opts.zIndex.toString();
     }
 
     if (opts.disableTimeSection) {
@@ -268,7 +268,7 @@ class SimplePicker {
   }
 
   selectDateElement(el: HTMLElement) {
-    const alreadyActive = this.$('.simplepicker-calender tbody .active');
+    const alreadyActive = this.$('.easyepoch-calender tbody .active');
     el.classList.add('active');
     if (alreadyActive) {
       alreadyActive.classList.remove('active');
@@ -302,7 +302,7 @@ class SimplePicker {
 
   handleIconButtonClick(el: HTMLElement) {
     const { $ } = this;
-    const baseClass = 'simplepicker-icon-';
+    const baseClass = 'easyepoch-icon-';
     const nextIcon = baseClass + 'next';
     const previousIcon = baseClass + 'previous';
     const calenderIcon = baseClass + 'calender';
@@ -310,8 +310,8 @@ class SimplePicker {
 
     if (el.classList.contains(calenderIcon)) {
       const $timeIcon = $('.' + timeIcon);
-      const $timeSection = $('.simplepicker-time-section');
-      const $calenderSection = $('.simplepicker-calender-section');
+      const $timeSection = $('.easyepoch-time-section');
+      const $calenderSection = $('.easyepoch-calender-section');
 
       $calenderSection.style.display = 'block';
       $timeSection.style.display = 'none';
@@ -323,8 +323,8 @@ class SimplePicker {
 
     if (el.classList.contains(timeIcon)) {
       const $calenderIcon = $('.' + calenderIcon);
-      const $calenderSection = $('.simplepicker-calender-section');
-      const $timeSection = $('.simplepicker-time-section');
+      const $calenderSection = $('.easyepoch-calender-section');
+      const $timeSection = $('.easyepoch-time-section');
 
       $timeSection.style.display = 'block';
       $calenderSection.style.display = 'none';
@@ -335,7 +335,7 @@ class SimplePicker {
     }
 
     let selectedDate;
-    const $active = $('.simplepicker-calender td.active');
+    const $active = $('.easyepoch-calender td.active');
     if ($active) {
       selectedDate = $active.innerHTML.trim();
     }
@@ -356,11 +356,11 @@ class SimplePicker {
 
   initListeners() {
     const {
-      $simplepicker, $timeInput,
-      $ok, $cancel, $simplepickerWrapper
+      $easyepoch, $timeInput,
+      $ok, $cancel, $easyepochWrapper
     } = this;
     const _this = this;
-    $simplepicker.addEventListener('click', function (e) {
+    $easyepoch.addEventListener('click', function (e) {
       const target = e.target as HTMLElement;
       const tagName = target.tagName.toLowerCase();
 
@@ -371,7 +371,7 @@ class SimplePicker {
       }
 
       if (tagName === 'button' &&
-          target.classList.contains('simplepicker-icon')) {
+          target.classList.contains('easyepoch-icon')) {
         _this.handleIconButtonClick(target);
         return;
       }
@@ -400,10 +400,10 @@ class SimplePicker {
     };
 
     $cancel.addEventListener('click', close);
-    $simplepickerWrapper.addEventListener('click', close);
+    $easyepochWrapper.addEventListener('click', close);
   }
 
-  callEvent(event: SimplePickerEvent, dispatcher: (a: HandlerFunction) => void) {
+  callEvent(event: EasyEpochEvent, dispatcher: (a: HandlerFunction) => void) {
     const listeners = this._eventHandlers[event] || [];
     listeners.forEach(function (func: HandlerFunction) {
       dispatcher(func);
@@ -411,15 +411,15 @@ class SimplePicker {
   }
 
   open() {
-    this.$simplepickerWrapper.classList.add('active');
+    this.$easyepochWrapper.classList.add('active');
   }
 
   // can be called by user or by click the cancel btn.
   close() {
-    this.$simplepickerWrapper.classList.remove('active');
+    this.$easyepochWrapper.classList.remove('active');
   }
 
-  on(event: SimplePickerEvent, handler: HandlerFunction) {
+  on(event: EasyEpochEvent, handler: HandlerFunction) {
     const { _validOnListeners, _eventHandlers } = this;
     if (!_validOnListeners.includes(event)) {
       throw new Error('Not a valid event!');
@@ -430,11 +430,11 @@ class SimplePicker {
   }
 
   toggleDisplayFade() {
-    this.$time.classList.toggle('simplepicker-fade');
+    this.$time.classList.toggle('easyepoch-fade');
     this.$displayDateElements.forEach($el => {
-      $el.classList.toggle('simplepicker-fade');
+      $el.classList.toggle('easyepoch-fade');
     });
   }
 }
 
-export = SimplePicker;
+export = EasyEpoch;

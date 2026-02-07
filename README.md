@@ -1,40 +1,40 @@
-# ChronosJS
+# EasyEpoch
 
 A lightweight datetime picker in vanilla JavaScript with zero dependencies.
 
 [Live Examples](https://christian-oleson.github.io/ChronosJS/)
 
-ChronosJS is a fork of [simplepicker](https://github.com/priyank-p/simplepicker) by Priyank Patel, originally based on [material-datetime-picker](https://github.com/ripjar/material-datetime-picker) but without relying on external dependencies like `moment`, `rome`, or `materialize`.
+EasyEpoch is a fork of [simplepicker](https://github.com/priyank-p/simplepicker) by Priyank Patel, originally based on [material-datetime-picker](https://github.com/ripjar/material-datetime-picker) but without relying on external dependencies like `moment`, `rome`, or `materialize`.
 
 ## Installation
 
 Install from npm:
 ```
-npm install chronosjs
+npm install easyepoch
 ```
 
 ## Usage
 
-Include the CSS and JavaScript files from the `dist/` directory. The CSS file `dist/simplepicker.css` styles the picker, and the JavaScript file `dist/simplepicker.js` provides the picker logic.
+Include the CSS and JavaScript files from the `dist/` directory. The CSS file `dist/easyepoch.css` styles the picker, and the JavaScript file `dist/easyepoch.js` provides the picker logic.
 
 If you use a bundler with `require` or ES6 `import`:
 
 ```javascript
-import SimplePicker from 'chronosjs';
+import EasyEpoch from 'easyepoch';
 ```
 
 For TypeScript:
 ```typescript
-import SimplePicker = require('chronosjs');
+import EasyEpoch = require('easyepoch');
 ```
 
-If you include the script directly via a `<script>` tag, `SimplePicker` is available as a global variable.
+If you include the script directly via a `<script>` tag, `EasyEpoch` is available as a global variable.
 
 TypeScript declaration files are included with the package.
 
 ## API
 
-### `new SimplePicker([el, opts])`
+### `new EasyEpoch([el, opts])`
 
 Creates a new picker instance and inserts it into the DOM.
 
@@ -48,14 +48,14 @@ Creates a new picker instance and inserts it into the DOM.
 The first argument can be `opts` directly if no element is needed.
 
 ```javascript
-const picker = new SimplePicker();
+const picker = new EasyEpoch();
 ```
 
 To use multiple pickers on the same page, each must be bound to a different element:
 
 ```javascript
-const picker1 = new SimplePicker();
-const picker2 = new SimplePicker('.another-element');
+const picker1 = new EasyEpoch();
+const picker2 = new EasyEpoch('.another-element');
 ```
 
 ### `picker.open()`
@@ -73,7 +73,7 @@ Closes the picker programmatically.
 Resets the picker to the given date. This overrides the user's current selection.
 
 ```javascript
-const picker = new SimplePicker();
+const picker = new EasyEpoch();
 picker.reset(new Date(2024, 11, 31, 7, 0, 0));
 picker.open();
 ```
@@ -110,4 +110,4 @@ npm test         # Run tests
 
 MIT - See [LICENSE](./LICENSE) for details.
 
-Originally created by [Priyank Patel](https://github.com/priyank-p). Forked and maintained as ChronosJS by [Christian Oleson](https://github.com/Christian-Oleson).
+Originally created by [Priyank Patel](https://github.com/priyank-p). Forked and maintained as EasyEpoch by [Christian Oleson](https://github.com/Christian-Oleson).

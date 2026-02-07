@@ -8,35 +8,35 @@ describe('htmlTemplate', () => {
   });
 
   it('should contain the wrapper class', () => {
-    expect(htmlTemplate).toContain('simplepicker-wrapper');
+    expect(htmlTemplate).toContain('easyepoch-wrapper');
   });
 
   it('should contain the date picker class', () => {
-    expect(htmlTemplate).toContain('simplepicker-date-picker');
+    expect(htmlTemplate).toContain('easyepoch-date-picker');
   });
 
   it('should contain the day header', () => {
-    expect(htmlTemplate).toContain('simplepicker-day-header');
+    expect(htmlTemplate).toContain('easyepoch-day-header');
   });
 
   it('should contain the date section elements', () => {
-    expect(htmlTemplate).toContain('simplepicker-month-and-year');
-    expect(htmlTemplate).toContain('simplepicker-date');
-    expect(htmlTemplate).toContain('simplepicker-select-pane');
+    expect(htmlTemplate).toContain('easyepoch-month-and-year');
+    expect(htmlTemplate).toContain('easyepoch-date');
+    expect(htmlTemplate).toContain('easyepoch-select-pane');
   });
 
   it('should contain calendar and time icons', () => {
-    expect(htmlTemplate).toContain('simplepicker-icon-calender');
-    expect(htmlTemplate).toContain('simplepicker-icon-time');
+    expect(htmlTemplate).toContain('easyepoch-icon-calender');
+    expect(htmlTemplate).toContain('easyepoch-icon-time');
   });
 
   it('should contain the time display with default value', () => {
-    expect(htmlTemplate).toContain('simplepicker-time');
+    expect(htmlTemplate).toContain('easyepoch-time');
     expect(htmlTemplate).toContain('12:00 PM');
   });
 
   it('should contain the calendar section with table', () => {
-    expect(htmlTemplate).toContain('simplepicker-calender-section');
+    expect(htmlTemplate).toContain('easyepoch-calender-section');
     expect(htmlTemplate).toContain('<table>');
     expect(htmlTemplate).toContain('<thead>');
     expect(htmlTemplate).toContain('<tbody>');
@@ -67,20 +67,20 @@ describe('htmlTemplate', () => {
   });
 
   it('should contain month navigation buttons', () => {
-    expect(htmlTemplate).toContain('simplepicker-icon-previous');
-    expect(htmlTemplate).toContain('simplepicker-icon-next');
-    expect(htmlTemplate).toContain('simplepicker-selected-date');
+    expect(htmlTemplate).toContain('easyepoch-icon-previous');
+    expect(htmlTemplate).toContain('easyepoch-icon-next');
+    expect(htmlTemplate).toContain('easyepoch-selected-date');
   });
 
   it('should contain the time input section', () => {
-    expect(htmlTemplate).toContain('simplepicker-time-section');
+    expect(htmlTemplate).toContain('easyepoch-time-section');
     expect(htmlTemplate).toContain('type="time"');
     expect(htmlTemplate).toContain('value="12:00"');
   });
 
   it('should contain Cancel and OK buttons', () => {
-    expect(htmlTemplate).toContain('simplepicker-cancel-btn');
-    expect(htmlTemplate).toContain('simplepicker-ok-btn');
+    expect(htmlTemplate).toContain('easyepoch-cancel-btn');
+    expect(htmlTemplate).toContain('easyepoch-ok-btn');
     expect(htmlTemplate).toContain('>Cancel</button>');
     expect(htmlTemplate).toContain('>OK</button>');
   });
@@ -88,8 +88,8 @@ describe('htmlTemplate', () => {
   it('should be valid HTML when parsed', () => {
     const container = document.createElement('div');
     container.innerHTML = htmlTemplate;
-    expect(container.querySelector('.simplepicker-wrapper')).not.toBeNull();
-    expect(container.querySelector('.simplepicker-date-picker')).not.toBeNull();
-    expect(container.querySelector('.simplepicker-calender')).not.toBeNull();
+    expect(container.querySelector('.easyepoch-wrapper')).not.toBeNull();
+    expect(container.querySelector('.easyepoch-date-picker')).not.toBeNull();
+    expect(container.querySelector('.easyepoch-calender')).not.toBeNull();
   });
 });

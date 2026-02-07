@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="dist/simplepicker.css">
-  <title>simplepicker</title>
+  <link rel="stylesheet" href="dist/easyepoch.css">
+  <title>easyepoch</title>
 
   <style>
     .event-log {
@@ -22,29 +22,29 @@
   </style>
 </head>
 <body>
-  <button class="simplepicker-btn">Show Picker</button>
+  <button class="easyepoch-btn">Show Picker</button>
   <div class="event-log">Event logs:<br></div>
 
-  <script src="dist/simplepicker.js"></script>
+  <script src="dist/easyepoch.js"></script>
   <script>
-    let simplepicker = new SimplePicker({
+    let easyepoch = new EasyEpoch({
       zIndex: 10
     });
 
-    simplepicker.open();
+    easyepoch.open();
 
     const $button = document.querySelector('button');
     const $eventLog = document.querySelector('.event-log');
     $button.addEventListener('click', (e) => {
-      simplepicker.open();
+      easyepoch.open();
     });
 
     // $eventLog.innerHTML += '\n\n';
-    simplepicker.on('submit', (date, readableDate) => {
+    easyepoch.on('submit', (date, readableDate) => {
       $eventLog.innerHTML += readableDate + '\n';
     });
 
-    simplepicker.on('close', (date) => {
+    easyepoch.on('close', (date) => {
       $eventLog.innerHTML += 'Picker Closed'  + '\n';
     });
   </script>
