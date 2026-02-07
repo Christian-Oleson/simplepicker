@@ -39,13 +39,13 @@ declare class EasyEpoch {
     private monthTracker;
     constructor(arg1?: HTMLElement | string | EasyEpochOpts, arg2?: EasyEpochOpts);
     initElMethod(el: any): void;
-    init(el: HTMLElement, opts: EasyEpochOpts): void;
+    init(wrapper: HTMLElement, opts: EasyEpochOpts): void;
     reset(newDate?: Date): void;
     compactMode(): void;
     disableTimeSection(): void;
     enableTimeSection(): void;
     setTheme(theme: EasyEpochTheme): void;
-    injectTemplate(el: HTMLElement): void;
+    injectTemplate(el: HTMLElement): HTMLElement;
     clearRows(): void;
     updateDateComponents(date: Date): void;
     render(data: any): void;
